@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <RootNamespace>pawre_eareaf</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="P\free-icon-key-11348476.png" />
+    <None Remove="P\free-icon-show-8389973.png" />
+    <None Remove="P\free-icon-user-456212.png" />
+    <None Remove="P\HFGHFGHFGH.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="P\free-icon-key-11348476.png" />
+    <Resource Include="P\free-icon-show-8389973.png" />
+    <Resource Include="P\free-icon-user-456212.png" />
+    <Resource Include="P\HFGHFGHFGH.png" />
+  </ItemGroup>
+
+</Project>
