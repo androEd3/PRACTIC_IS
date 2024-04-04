@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,6 +22,14 @@ namespace pawre_eareaf
             InitializeComponent();
         }
 
+        public class User
+        {
+            public int Id { get; set; }
+            public string Login { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
+        }
+
         //ВИДИМОСТЬ ПАРОЛЯ
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -32,130 +41,37 @@ namespace pawre_eareaf
         {
             string password = pass.Text;
 
-            if (password.Contains('!'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-            }
+            var loginnn = login.Text;
 
-            else if (password.Contains('@'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
+            var passs = pass.Text;
 
-            else if (password.Contains('#'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
+            var context = new AddDbContecxt();
 
-            else if (password.Contains('$'))
+            if (password.Contains('!') || password.Contains('@') || password.Contains('#') || password.Contains('$') || password.Contains('%') || password.Contains('^') || password.Contains('*') || password.Contains('(') || password.Contains(')') || password.Contains('_') || password.Contains('-') || password.Contains('=') || password.Contains('+'))
             {
                 pass.Text = "Недопустимый символ";
+                pass.BorderThickness = new Thickness(0.5);
                 pass.BorderBrush = Brushes.Red;
                 await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-
-            else if (password.Contains('%'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-
-            else if (password.Contains('^'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-            else if (password.Contains('*'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-            else if (password.Contains('('))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-            else if (password.Contains(')'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-            else if (password.Contains('_'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-            else if (password.Contains('-'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-
-            else if (password.Contains('='))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
-            }
-
-            else if (password.Contains('+'))
-            {
-                pass.Text = "Недопустимый символ";
-                pass.BorderBrush = Brushes.Red;
-                await Task.Delay(2000);
-                pass.Text = password;
-                pass.BorderBrush = Brushes.CadetBlue;
-                pass.BorderThickness = new Thickness(0.5);
+                pass.Text = "";
+                pass.BorderBrush = Brushes.Black;
             }
 
             else
             {
+                var user_exeists = context.Users.FirstOrDefault(x => x.Login == loginnn && x.Password == passs);
 
+                if (user_exeists is null)
+                {
+                    invalid_parol.Text = "Неверные данные";
+                    return;
+                }
+                else
+                {
+                    Window2 acc = new Window2();
+                    acc.Show();
+                    Close();
+                }
             }
         }
 
