@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pawre[eareaf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c803f9f81b50fc982385193c3bdf768118157330")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa268d003822c157c4c25807ef75eaa37fc5a328")]
 [assembly: System.Reflection.AssemblyProductAttribute("pawre[eareaf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pawre[eareaf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

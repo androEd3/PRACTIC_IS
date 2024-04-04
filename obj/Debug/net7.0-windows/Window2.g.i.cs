@@ -61,7 +61,7 @@ namespace pawre_eareaf {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/pawre[eareaf;component/window2.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/pawre[eareaf;V1.0.0.0;component/window2.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Window2.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
